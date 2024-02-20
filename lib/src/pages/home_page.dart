@@ -1,33 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:gastos_app/src/pages/about_page.dart';
-import 'package:gastos_app/src/components/login_component.dart'; // Importa el componente de inicio de sesión
+import 'package:gastos_app/src/components/login_component.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-        backgroundColor: const Color(0xFFFF9800),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            // Aquí agregamos el formulario de inicio de sesión
-            LoginComponent(
-              onSubmit: (email, password) {
-                final route = MaterialPageRoute(
-                  builder: (context) {
-                    return const AboutPage();
-                  },
-                );
-                Navigator.push(context, route);
-              },
-            ),
-          ],
+
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomCenter,
+            colors: [Colors.blue,Color.fromARGB(255, 233, 235, 250), Colors.purple], // Colores del gradiente
+          ),
+        ),
+        child: Center(
+          child: LoginComponent(
+            onSubmit: (String email, String password) {
+              // Lógica de inicio de sesión
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AboutPage()),
+              );
+            },
+          ),
         ),
       ),
     );
