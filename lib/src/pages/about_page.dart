@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:gastos_app/src/services/user_services.dart';
+import 'package:gastos_app/src/components/bottom_appbar.dart';
 import 'dart:io';
 
 class AboutPage extends StatefulWidget {
@@ -119,41 +120,7 @@ class _AboutPageState extends State<AboutPage> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.transparent,
-        child: SizedBox(
-          height: 60,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              IconButton(
-                icon: const Icon(Icons.work),
-                onPressed: () {
-                  Navigator.pushNamed(context, 'services');
-                },
-              ),
-              IconButton(
-                icon: const Icon(Icons.group),
-                onPressed: () {
-                  Navigator.pushNamed(context, 'team');
-                },
-              ),
-              IconButton(
-                icon: const Icon(Icons.person),
-                onPressed: () {
-                  Navigator.pushNamed(context, 'profile');
-                },
-              ),
-              IconButton(
-                icon: const Icon(Icons.error),
-                onPressed: () {
-                  Navigator.pushNamed(context, 'nothing');
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
+      bottomNavigationBar: const CustomBottomAppBar(),
     );
   }
 

@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 
 class AuthServices {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -9,7 +8,6 @@ class AuthServices {
     try {
       UserCredential credential = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
-      // Devuelve el usuario desde el UserCredential
       return credential.user;
     } on FirebaseAuthException catch (e) {
       print("Error al iniciar sesión: $e");
@@ -18,7 +16,7 @@ class AuthServices {
     }
   }
 
-  Future<void> signOut(BuildContext context) async {
+  Future<void> signOut() async {
     try {
       await FirebaseAuth.instance.signOut();
     } catch (e) {
